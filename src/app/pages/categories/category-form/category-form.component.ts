@@ -63,7 +63,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     this.categoryForm = this.formBuilder.group({
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
-      description: [null]
+      description: [null, [Validators.required, Validators.minLength(2)]]
     });
   }
 
@@ -130,6 +130,6 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     if (error.status == 422)
       this.serverErroMessage = JSON.parse(error._body).errors;
     else
-      this.serverErroMessage = ['Falha na comunição com o servidor. Por favor tenta mais tarde.'];
+      this.serverErroMessage = ['Falha na comunição com o servidor. Por favor, tente mais tarde.'];
   }
 }

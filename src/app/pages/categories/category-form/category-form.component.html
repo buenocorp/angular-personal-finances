@@ -31,19 +31,28 @@
           <input type="text" class="form-control" id="name" formControlName="name">
         </div>
 
-        <div class="text-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
-          <div *ngIf="categoryForm.get('name').errors.required">dado obrigatório</div>
-          <div *ngIf="categoryForm.get('name').errors.minlenght">deve ter no mínimo 2 caracteres</div>
-
-        </div>
-
         <div class="form-group col-md-8">
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
         </div>
+
+        <div class="text-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
+          <div *ngIf="categoryForm.get('name').errors.required">*dado obrigatório</div>
+          <div *ngIf="categoryForm.get('name').errors.minlenght">*deve ter no mínimo 2 caracteres</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="alert alert-danger mt-4" *ngIf="serverErroMessage" >
+    <strong>
+      Erro no servidor: 
+    </strong>
+    <ul>
+      <li *ngFor="let error of serverErroMessage">{{ error }}</li>
+    </ul>
+  </div>
+
   <button [disabled]="submitting || categoryForm.invalid" type="submit"
     class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
 
