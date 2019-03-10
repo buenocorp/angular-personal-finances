@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: 'categories', loadChildren: './pages/categories/categories.module#CategoriesModule' }
 
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
